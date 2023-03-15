@@ -20,4 +20,5 @@ for i in range(LoadDate.countDiabetes):
         if LoadDate.arrayDiabetes[i] == 1.0: one_oneHP = one_oneHP + 1
         if LoadDate.arrayDiabetes[i] == 2.0: two_oneHP = two_oneHP + 1
 
-
+informationHP = [zero_zeroHP, zero_oneHP, one_zeroHP,one_oneHP, two_zeroHP,two_oneHP]
+print(informationHP)
