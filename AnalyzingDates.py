@@ -1,6 +1,7 @@
 import Fruits
 import Diabetes
 import LoadDate
+from HighBP import zero_zeroHP, zero_oneHP, one_zeroHP, one_oneHP, two_zeroHP, two_oneHP
 
 print('**************DIABETES**************')
 print('No diabetes', Diabetes.no_diabetes)
@@ -37,3 +38,24 @@ print('Prediabetes + fruits', LoadDate.percent_value(Fruits.one_one, Diabetes.pr
 print('\nPercent analyzing Diabetes: ')
 print('Diabetes no fruits', LoadDate.percent_value(Fruits.two_zero, Diabetes.diabetes), '%')
 print('Diabetes + fruits', LoadDate.percent_value(Fruits.two_one, Diabetes.diabetes), '%')
+
+print('\n**************HP**************')
+print('No diabetes no HP', zero_zeroHP)
+print('No diabetes + HP', zero_oneHP)
+print('Prediabetes no HP', one_zeroHP)
+print('Prediabetes + HP', one_oneHP)
+print('Diabetes no HP', two_zeroHP)
+print('Diabetes + HP', two_oneHP)
+
+print('\nPercent analyzing No diabetes: ')
+print('No diabetes no HP', LoadDate.percent_value(zero_zeroHP, Diabetes.no_diabetes), '%')
+print('No diabetes + HP', LoadDate.percent_value(zero_oneHP, Diabetes.no_diabetes), '%')
+
+print('\nPercent analyzing Prediabetes: ')
+print('Prediabetes no HP', LoadDate.percent_value(one_zeroHP, Diabetes.prediabetes), '%')
+print('Prediabetes + HP', LoadDate.percent_value(one_oneHP, Diabetes.prediabetes), '%')
+
+print('\nPercent analyzing Diabetes: ')
+print('Diabetes no HP', LoadDate.percent_value(two_zeroHP, Diabetes.diabetes), '%')
+print('Diabetes + HP', LoadDate.percent_value(two_oneHP, Diabetes.diabetes), '%')
+
