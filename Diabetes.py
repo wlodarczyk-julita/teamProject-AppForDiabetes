@@ -12,4 +12,4 @@ for i in range(LoadDate.countDiabetes):
     if LoadDate.arrayDiabetes[i] == 1.0: prediabetes = prediabetes + 1
     if LoadDate.arrayDiabetes[i] == 2.0: diabetes = diabetes + 1
 
-
+print(diabetes, prediabetes, no_diabetes)
