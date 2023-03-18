@@ -26,10 +26,11 @@ informationHP = [zero_zeroHP, zero_oneHP, one_zeroHP,one_oneHP, two_zeroHP,two_o
 percentValueAllDateHP = []
 percentValueHP = []
 
-def fillArray (array, percentValueAllDate, percentValue, countDiabetes, countTypeDiabetes, countTypePrediabetes, countTypeNodiabetes):
+def fillArrayAllDate(array, percentValueAllDate, countDiabetes):
     for i in range(len(array)):
         percentValueAllDate.append(LoadDate.percent_value(array[i], countDiabetes))
 
+def fillArrayTypeDate(array, percentValue,countTypeDiabetes, countTypePrediabetes, countTypeNodiabetes):
     percentValue.append(LoadDate.percent_value(array[0], countTypeDiabetes))
     percentValue.append(LoadDate.percent_value(array[1], countTypeDiabetes))
     percentValue.append(LoadDate.percent_value(array[2], countTypePrediabetes))
@@ -37,5 +38,6 @@ def fillArray (array, percentValueAllDate, percentValue, countDiabetes, countTyp
     percentValue.append(LoadDate.percent_value(array[4], countTypeNodiabetes))
     percentValue.append(LoadDate.percent_value(array[5], countTypeNodiabetes))
 
-LoadDate.fillArray(informationHP, percentValueAllDateHP, percentValueHP, LoadDate.countDiabetes, Diabetes.diabetes, Diabetes.prediabetes, Diabetes.prediabetes)
+fillArrayAllDate(informationHP, percentValueAllDateHP, LoadDate.countDiabetes)
+fillArrayTypeDate(informationHP, percentValueHP, Diabetes.diabetes, Diabetes.prediabetes, Diabetes.no_diabetes)
 SaveToFIle.save(informationHP, percentValueAllDateHP, percentValueHP, 'HP','Percent analyzing all date:','Percent analyzing particular date:' )
