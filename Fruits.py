@@ -14,6 +14,8 @@ import LoadDate
 
 import matplotlib.pyplot as plt
 
+import SaveToFIle
+
 arrayFruits = [row[9] for row in LoadDate.array]
 
 # plt.scatter(arrayDiabetes, arrayFruits , label='Klasa 3')
@@ -23,24 +25,33 @@ arrayFruits = [row[9] for row in LoadDate.array]
 # plt.ylabel('Fruits')
 # plt.show()
 
-zero_zero = 0
-one_zero = 0
-two_zero = 0
+zero_zeroFruit = 0
+one_zeroFruit = 0
+two_zeroFruit = 0
 
-zero_one = 0
-one_one = 0
-two_one = 0
+zero_oneFruit = 0
+one_oneFruit = 0
+two_oneFruit = 0
 for i in range(LoadDate.countDiabetes):
     if arrayFruits[i] == 0.0:
-        if LoadDate.arrayDiabetes[i] == 0.0: zero_zero = zero_zero + 1
-        if LoadDate.arrayDiabetes[i] == 1.0: one_zero = one_zero + 1
-        if LoadDate.arrayDiabetes[i] == 2.0: two_zero = two_zero + 1
+        if LoadDate.arrayDiabetes[i] == 0.0: zero_zeroFruit = zero_zeroFruit + 1
+        if LoadDate.arrayDiabetes[i] == 1.0: one_zeroFruit = one_zeroFruit + 1
+        if LoadDate.arrayDiabetes[i] == 2.0: two_zeroFruit = two_zeroFruit + 1
     if arrayFruits[i] == 1.0:
-        if LoadDate.arrayDiabetes[i] == 0.0: zero_one = zero_one + 1
-        if LoadDate.arrayDiabetes[i] == 1.0: one_one = one_one + 1
-        if LoadDate.arrayDiabetes[i] == 2.0: two_one = two_one + 1
+        if LoadDate.arrayDiabetes[i] == 0.0: zero_oneFruit = zero_oneFruit + 1
+        if LoadDate.arrayDiabetes[i] == 1.0: one_oneFruit = one_oneFruit + 1
+        if LoadDate.arrayDiabetes[i] == 2.0: two_oneFruit = two_oneFruit + 1
 
 
+informationFruit = [zero_zeroFruit, zero_oneFruit, one_zeroFruit,one_oneFruit, two_zeroFruit,two_oneFruit]
+percentValueAllDateFruit = []
+percentValueFruit = []
+
+LoadDate.fillArrayAllDate(informationFruit, percentValueAllDateFruit, LoadDate.countDiabetes)
+print(informationFruit, percentValueFruit, percentValueAllDateFruit)
+LoadDate.fillArrayTypeDate(informationFruit, percentValueFruit, Diabetes.no_diabetes, Diabetes.prediabetes, Diabetes.diabetes)
+print(informationFruit, percentValueFruit, percentValueAllDateFruit)
+SaveToFIle.save(informationFruit, percentValueAllDateFruit, percentValueFruit, 'Fruit','Percent analyzing all date:','Percent analyzing particular date:' )
 
 # my_data = np.genfromtxt('baza.csv', delimiter=',')
 # np.save('my_dat.npz', my_data)

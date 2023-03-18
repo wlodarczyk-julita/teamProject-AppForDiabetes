@@ -27,7 +27,5 @@ percentValueAllDateHP = []
 percentValueHP = []
 
 LoadDate.fillArrayAllDate(informationHP, percentValueAllDateHP, LoadDate.countDiabetes)
-print(informationHP, percentValueHP, percentValueAllDateHP)
 LoadDate.fillArrayTypeDate(informationHP, percentValueHP, Diabetes.no_diabetes, Diabetes.prediabetes, Diabetes.diabetes)
-print(informationHP, percentValueHP, percentValueAllDateHP)
 SaveToFIle.save(informationHP, percentValueAllDateHP, percentValueHP, 'HP','Percent analyzing all date:','Percent analyzing particular date:' )
