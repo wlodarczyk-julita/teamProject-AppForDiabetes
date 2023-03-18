@@ -1,7 +1,9 @@
-from HighBP import informationHP
-
 import pandas as pd
-#save array as csv file
-ser = pd.Series(informationHP)
-ser.rename('HP', inplace=True)
-ser.to_csv(r'HP.csv', index=False, header=True)
+def save (array, arrayAllDate, arrayTypicalDate, name, name1, name2):
+    rawDate = { name: array,
+               name1: arrayAllDate,
+               name2: arrayTypicalDate,
+    }
+    df = pd.DataFrame(rawDate, columns=[name, name1, name2])
+    df.to_csv(name+'.csv', index=False, header=True)
+

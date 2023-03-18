@@ -1,4 +1,6 @@
+import Diabetes
 import LoadDate
+import SaveToFIle
 
 arrayHP = [row[1] for row in LoadDate.array]
 
@@ -21,4 +23,19 @@ for i in range(LoadDate.countDiabetes):
         if LoadDate.arrayDiabetes[i] == 2.0: two_oneHP = two_oneHP + 1
 
 informationHP = [zero_zeroHP, zero_oneHP, one_zeroHP,one_oneHP, two_zeroHP,two_oneHP]
-print(informationHP)
+percentValueAllDateHP = []
+percentValueHP = []
+
+def fillArray (array, percentValueAllDate, percentValue, countDiabetes, countTypeDiabetes, countTypePrediabetes, countTypeNodiabetes):
+    for i in range(len(array)):
+        percentValueAllDate.append(LoadDate.percent_value(array[i], countDiabetes))
+
+    percentValue.append(LoadDate.percent_value(array[0], countTypeDiabetes))
+    percentValue.append(LoadDate.percent_value(array[1], countTypeDiabetes))
+    percentValue.append(LoadDate.percent_value(array[2], countTypePrediabetes))
+    percentValue.append(LoadDate.percent_value(array[3], countTypePrediabetes))
+    percentValue.append(LoadDate.percent_value(array[4], countTypeNodiabetes))
+    percentValue.append(LoadDate.percent_value(array[5], countTypeNodiabetes))
+
+LoadDate.fillArray(informationHP, percentValueAllDateHP, percentValueHP, LoadDate.countDiabetes, Diabetes.diabetes, Diabetes.prediabetes, Diabetes.prediabetes)
+SaveToFIle.save(informationHP, percentValueAllDateHP, percentValueHP, 'HP','Percent analyzing all date:','Percent analyzing particular date:' )
