@@ -17,7 +17,8 @@ base = pd.read_csv('baza.csv')
 # print(base)
 
 # Create features and target
-X = base[['HighBP', 'HighChol', 'CholCheck', 'BMI', 'Smoker', 'Stroke', 'HeartDiseaseorAttack', 'PhysActivity', 'Fruits', 'Veggies', 'HvyAlcoholConsump', 'AnyHealthcare', 'NoDocbcCost', 'GenHlth', 'MentHlth', 'PhysHlth','DiffWalk','Sex','Age','Education','Income']]
+# X = base[['HighBP', 'HighChol', 'CholCheck', 'BMI', 'Smoker', 'Stroke', 'HeartDiseaseorAttack', 'PhysActivity', 'Fruits', 'Veggies', 'HvyAlcoholConsump', 'AnyHealthcare', 'NoDocbcCost', 'GenHlth', 'MentHlth', 'PhysHlth','DiffWalk','Sex','Age','Education','Income']]
+X = base[['HighBP', 'BMI', 'Smoker', 'PhysActivity', 'Fruits', 'Veggies', 'GenHlth', 'MentHlth', 'PhysHlth', 'Sex','Age']]
 Y = base[['Diabetes_012']]
 # print(X)
 # print(Y)
@@ -28,7 +29,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.25, rand
 
 # Train the model
 #n_estimators - The number of trees in the forest.
-regr = RandomForestRegressor(n_estimators = 300, max_depth = 30, random_state = 42)
+regr = RandomForestRegressor(n_estimators = 300, max_depth = 30, random_state = 30)
 #Return a contiguous flattened array.
 regr.fit(X_train, y_train.values.ravel())
 
@@ -80,7 +81,7 @@ characteristics_importances = sorted(characteristics_importances, key = lambda x
 [print('Variable: {:20} Importance: {}'.format(*pair)) for pair in characteristics_importances];
 
 # Visualize the variables importances
-plt.bar(characteristics.sort_values(), importances, orientation = 'vertical')
+plt.bar(characteristics, importances, orientation = 'vertical')
 plt.xticks(rotation = 'vertical')
 plt.ylabel('Importance')
 plt.xlabel('Variable')
