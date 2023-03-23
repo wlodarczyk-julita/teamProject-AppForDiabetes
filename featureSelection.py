@@ -28,7 +28,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size = 0.25, rand
 
 # Train the model
 #n_estimators - The number of trees in the forest.
-regr = RandomForestRegressor(n_estimators = 200, max_depth = 20, random_state = 100)
+regr = RandomForestRegressor(n_estimators = 300, max_depth = 30, random_state = 42)
 #Return a contiguous flattened array.
 regr.fit(X_train, y_train.values.ravel())
 
@@ -39,7 +39,8 @@ predictions = regr.predict(X_test)
 result = X_test
 result['Diabetes'] = y_test
 result['prediction'] = predictions.tolist()
-print(result)
+# print(result)
+
 
 #To estimate our model more precisely, we will look at Mean absolute error (MAE), Mean squared error (MSE), and R-squared scores.
 # Mean absolute error (MAE)
@@ -60,16 +61,16 @@ print('R-squared scores:', round(r2, 2))
 from sklearn.model_selection import GridSearchCV
 
 # Find the best parameters for the model
-parameters = {
-    'max_depth': [70, 80, 90, 100],
-    'n_estimators': [900, 1000, 1100]
-}
-gridforest = GridSearchCV(regr, parameters, cv = 3, n_jobs = -1, verbose = 1)
-gridforest.fit(X_train, y_train.values.ravel())
-gridforest.best_params_
-print(gridforest.best_params_)
+# parameters = {
+#     'max_depth': [10, 20, 30, 40],
+#     'n_estimators': [100, 200, 300]
+# }
+# gridforest = GridSearchCV(regr, parameters, cv = 3, n_jobs = -1, verbose = 1)
+# gridforest.fit(X_train, y_train.values.ravel())
+# gridforest.best_params_
+# print(gridforest.best_params_)
 
-
+# Get features list
 characteristics = X.columns
 
 # Get the variables importances, sort them, and print the result
@@ -79,7 +80,7 @@ characteristics_importances = sorted(characteristics_importances, key = lambda x
 [print('Variable: {:20} Importance: {}'.format(*pair)) for pair in characteristics_importances];
 
 # Visualize the variables importances
-plt.bar(characteristics, importances, orientation = 'vertical')
+plt.bar(characteristics.sort_values(), importances, orientation = 'vertical')
 plt.xticks(rotation = 'vertical')
 plt.ylabel('Importance')
 plt.xlabel('Variable')
